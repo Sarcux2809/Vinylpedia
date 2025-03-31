@@ -8,28 +8,49 @@
 </head>
 <body>
 
-    <h1>Vinylpedia</h1>
+    <!-- Barra de navegación -->
+    <header class="navbar">
+        <div class="logo">
+            <h1>Vinylpedia</h1>
+        </div>
 
-    <form method="get">
-        <input type="text" name="artist" placeholder="Buscar artista" required>
-        <button type="submit">Buscar</button>
-    </form>    
+        <form method="get" class="search-bar">
+            <input type="text" name="artist" placeholder="Buscar artista" required>
+            <button type="submit">Buscar</button>
+        </form>
 
-    <div class="results">
-        {% if results %}
-            {% for vinyl in results %}
-                <div class="vinyl">
-                    <a href="{{ url_for('vinyl_detail', vinyl_id=vinyl.id) }}">
-                        <img src="{{ vinyl.cover_image }}" alt="{{ vinyl.title }}">
-                        <h2>{{ vinyl.title }}</h2>
-                    </a>
+        <div class="auth-buttons">
+            <button class="login">Iniciar sesión</button>
+            <button class="register">Registrarse</button>
+        </div>
+    </header>
+
+    <!-- Sección principal -->
+    <main class="content">
+        <div class="results">
+            {% if results %}
+                <h2>Resultados de búsqueda</h2>
+                <div class="vinyl-grid">
+                    {% for vinyl in results %}
+                        <div class="vinyl">
+                            <a href="{{ url_for('vinyl_detail', vinyl_id=vinyl.id) }}">
+                                <img src="{{ vinyl.cover_image }}" alt="{{ vinyl.title }}">
+                                <h3>{{ vinyl.title }}</h3>
+                                <p>{{ vinyl.artist }}</p>
+                            </a>
+                        </div>
+                    {% endfor %}
                 </div>
-            {% endfor %}
-        {% else %}
-            <p>No se encontraron resultados.</p>
-        {% endif %}
-    </div>
-    
+            {% else %}
+                <p>No se encontraron resultados.</p>
+            {% endif %}
+        </div>
+    </main>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2025 Vinylpedia - Todos los derechos reservados.</p>
+    </footer>
 
 </body>
 </html>
