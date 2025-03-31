@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vinylpedia</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+    <h1>Vinylpedia</h1>
+
+    <form method="get">
+        <input type="text" name="artist" placeholder="Buscar artista" required>
+        <button type="submit">Buscar</button>
+    </form>    
+
+    <div class="results">
+        {% if results %}
+            {% for vinyl in results %}
+                <div class="vinyl">
+                    <a href="{{ url_for('vinyl_detail', vinyl_id=vinyl.id) }}">
+                        <img src="{{ vinyl.cover_image }}" alt="{{ vinyl.title }}">
+                        <h2>{{ vinyl.title }}</h2>
+                    </a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No se encontraron resultados.</p>
+        {% endif %}
+    </div>
+    
+
+</body>
+</html>

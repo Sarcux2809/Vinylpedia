@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles de {{ vinyl.title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/detail.css') }}">
+</head>
+<body>
+
+    <header>
+        <h1>Vinylpedia</h1>
+        <nav>
+            <a href="{{ url_for('index') }}">Inicio</a>
+        </nav>
+    </header>
+
+    <main class="vinyl-detail">
+        
+        <!-- Imagen del vinilo -->
+        <section class="vinyl-image">
+            <img src="{{ vinyl.cover_image }}" alt="{{ vinyl.title }}">
+        </section>
+
+        <!-- Información del vinilo -->
+        <section class="vinyl-info">
+            <h2>{{ vinyl.title }}</h2>
+            <table>
+                <tr><th>Artista</th><td>{{ vinyl.artist }}</td></tr>
+                <tr><th>Sello</th><td>{{ vinyl.label }}</td></tr>
+                <tr><th>Formato</th><td>{{ vinyl.format }}</td></tr>
+                <tr><th>País</th><td>{{ vinyl.country }}</td></tr>
+                <tr><th>Publicado</th><td>{{ vinyl.release_year }}</td></tr>
+                <tr><th>Género</th><td>{{ vinyl.genre }}</td></tr>
+                <tr><th>Estilo</th><td>{{ vinyl.style }}</td></tr>
+                <tr><th>Descripción</th><td>{{ vinyl.description }}</td></tr>
+            </table>
+        </section>
+
+        <!-- Lista de canciones -->
+        <section class="tracklist">
+            <h3>Lista de Canciones</h3>
+            <ul>
+                {% for track in vinyl.tracklist %}
+                    <li>{{ track.position }} - {{ track.title }} ({{ track.duration }})</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <!-- Enlaces a plataformas -->
+        <section class="vinyl-links">
+            <h3>Escucha el álbum</h3>
+            <ul>
+                {% if vinyl.spotify_url %}
+                    <li><a href="{{ vinyl.spotify_url }}" target="_blank">Spotify</a></li>
+                {% endif %}
+                {% if vinyl.youtube_url %}
+                    <li><a href="{{ vinyl.youtube_url }}" target="_blank">YouTube</a></li>
+                {% endif %}
+                <li><a href="{{ vinyl.discogs_url }}" target="_blank">Ver en Discogs</a></li>
+            </ul>
+        </section>
+
+        <!-- Videos relacionados -->
+        <section class="videos">
+            <h3>Videos Relacionados</h3>
+            {% if vinyl.videos %}
+                {% for video in vinyl.videos %}
+                    <div class="video">
+                        <a href="{{ video.url }}" target="_blank">{{ video.title }}</a>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No hay videos disponibles.</p>
+            {% endif %}
+        </section>
+
+        <!-- Sección de recomendaciones -->
+        <section class="recommendations">
+            <h3>Te puede interesar</h3>
+            <p>Próximamente...</p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Vinylpedia - Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
