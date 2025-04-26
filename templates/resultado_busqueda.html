@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <title>Vinylpedia</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    rel="stylesheet"
+  />
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+    }
+    /* Custom background gradient that mimics the varied colors from the cards */
+    .dynamic-bg {
+      background: linear-gradient(
+        90deg,
+        #4a5a4a 0%,
+        #3a4a5a 20%,
+        #5a4a3a 40%,
+        #4a3a5a 60%,
+        #3a5a4a 80%,
+        #5a3a4a 100%
+      );
+    }
+    @media (max-width: 767px) {
+      .dynamic-bg {
+        background: linear-gradient(135deg, #4a5a4a 0%, #3a4a5a 100%);
+      }
+    }
+    /* Hide scrollbar but allow scrolling */
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+    .scrollbar-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-r from-[#3a2a22] via-[#4a3f3a] to-[#2a3a2a] min-h-screen flex flex-col items-center p-4">
+  <div
+    class="w-full rounded-xl p-4 md:p-6 flex flex-col gap-4 md:gap-6 shadow-[0_0_40px_10px_rgba(0,255,0,0.2)] dynamic-bg"
+  >
+    <!-- Header -->
+    <header class="flex flex-wrap items-center gap-4 md:gap-6">
+      <!-- Logo and mobile menu button -->
+      <div class="flex items-center gap-3 w-full md:w-auto justify-between">
+        <div class="flex items-center gap-3">
+          <img
+            alt="Vinylpedia logo, stylized vinyl record icon"
+            class="w-8 h-8 md:w-10 md:h-10"
+            src="https://storage.googleapis.com/a1aa/image/20543dea-4330-4442-8ea1-3c4e906305c5.jpg"
+          />
+          <h1 class="text-white text-lg md:text-xl font-normal">Vinylpedia</h1>
+        </div>
+        <button class="md:hidden text-white text-xl" id="mobileMenuButton">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+
+      <!-- Navigation - hidden on mobile by default -->
+      <nav class="hidden md:flex items-center gap-4 md:gap-6 md:ml-6 text-white text-sm w-full md:w-auto" id="mainNav">
+        <a
+          aria-current="page"
+          class="bg-gray-300 text-gray-900 rounded px-2 py-1 cursor-default"
+          href="#"
+          >Inicio</a
+        >
+        <a class="hover:underline" href="#">Biblioteca</a>
+      </nav>
+
+      <!-- Search and buttons -->
+      <div class="flex items-center gap-3 w-full md:w-auto">
+        <form class="relative w-full md:max-w-[220px]">
+          <input
+            class="w-full rounded-full bg-gray-600 bg-opacity-40 text-gray-300 placeholder-gray-400 text-sm py-2 pl-4 pr-10 focus:outline-none"
+            placeholder="Jose Jose"
+            type="search"
+          />
+          <button
+            aria-label="Buscar"
+            class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-200"
+            type="submit"
+          >
+            <i class="fas fa-search"></i>
+          </button>
+        </form>
+        <button
+          aria-label="Carrito de compras"
+          class="text-white text-xl ml-2 md:ml-4 hover:text-gray-300"
+        >
+          <i class="fas fa-shopping-cart"></i>
+        </button>
+        <div class="hidden md:flex items-center gap-2 ml-2">
+          <button class="bg-white text-black rounded px-3 py-1 text-sm font-normal">
+            Sign in
+          </button>
+          <button class="bg-gray-700 text-white rounded px-3 py-1 text-sm font-normal">
+            Register
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile auth buttons -->
+    <div class="md:hidden flex justify-center gap-4 pb-2">
+      <button class="bg-white text-black rounded px-3 py-1 text-sm">Sign in</button>
+      <button class="bg-gray-700 text-white rounded px-3 py-1 text-sm">Register</button>
+    </div>
+
+    <main class="flex flex-col md:flex-row gap-4 md:gap-6">
+      <!-- Filters - Hidden on mobile by default -->
+      <aside
+        class="hidden md:block bg-gray-600 bg-opacity-40 rounded border border-gray-500 p-4 w-full md:w-[180px] lg:w-[220px] text-gray-300 text-xs"
+        id="filtersSidebar"
+      >
+        <div class="mb-4">
+          <p class="mb-2 font-normal">Filtros aplicados:</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-gray-700 rounded px-2 py-1 flex items-center gap-1">
+              1860
+              <button aria-label="Eliminar filtro 1860" class="text-gray-300 hover:text-white">
+                <i class="fas fa-times text-[10px]"></i>
+              </button>
+            </span>
+            <span class="bg-gray-700 rounded px-2 py-1 flex items-center gap-1">
+              Pop
+              <button aria-label="Eliminar filtro Pop" class="text-gray-300 hover:text-white">
+                <i class="fas fa-times text-[10px]"></i>
+              </button>
+            </span>
+            <span class="bg-gray-700 rounded px-2 py-1 flex items-center gap-1">
+              Vol 1
+              <button aria-label="Eliminar filtro Vol 1" class="text-gray-300 hover:text-white">
+                <i class="fas fa-times text-[10px]"></i>
+              </button>
+            </span>
+            <span class="bg-gray-700 rounded px-2 py-1 flex items-center gap-1">
+              Latin
+              <button aria-label="Eliminar filtro Latin" class="text-gray-300 hover:text-white">
+                <i class="fas fa-times text-[10px]"></i>
+              </button>
+            </span>
+          </div>
+        </div>
+        <div class="mb-4">
+          <p class="mb-2 font-normal">Década</p>
+          <div class="flex justify-between items-center mb-1">
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input
+                checked
+                class="w-3 h-3 text-gray-900 bg-gray-100 border-gray-300 rounded"
+                type="checkbox"
+              />
+              <span>1860</span>
+            </label>
+            <span>23</span>
+          </div>
+          <div class="flex justify-between items-center mb-1">
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input
+                class="w-3 h-3 text-gray-900 bg-gray-100 border-gray-300 rounded"
+                type="checkbox"
+              />
+              <span>1850</span>
+            </label>
+            <span>10</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input
+                class="w-3 h-3 text-gray-900 bg-gray-100 border-gray-300 rounded"
+                type="checkbox"
+              />
+              <span>1840</span>
+            </label>
+            <span>3</span>
+          </div>
+        </div>
+        <div class="mb-4">
+          <p class="mb-2 font-normal">Género</p>
+          <label class="flex items-center gap-2 mb-1 cursor-pointer">
+            <input
+              checked
+              class="w-3 h-3 text-gray-900 bg-gray-100 border-gray-300 rounded"
+              type="checkbox"
+            />
+            <span>Pop</span>
+          </label>
+          <label class="flex items-center gap-2 mb-1 cursor-pointer">
+            <input
+              checked
+              class="w-3 h-3 text-gray-900 bg-gray-100 border-gray-300 rounded"
+              type="checkbox"
+            />
+            <span>Latin</span>
+          </label>
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input
+              class="w-3 h-3 text-gray-900 bg-gray-100 border-gray-300 rounded"
+              type="checkbox"
+            />
+            <span>Rock</span>
+          </label>
+        </div>
+        <div>
+          <p class="mb-2 font-normal">Edicion</p>
+          <label class="flex items-center gap-2 mb-1 cursor-pointer">
+            <input
+              checked
+              class="w-3 h-3 text-gray-900 bg-gray-100 border-gray-300 rounded"
+              type="checkbox"
+            />
+            <span>Vol 1</span>
+          </label>
+          <label class="flex items-center gap-2 mb-1 cursor-pointer">
+            <input
+              class="w-3 h-3 text-gray-900 bg-gray-100 border-gray-300 rounded"
+              type="checkbox"
+            />
+            <span>Deluxe</span>
+          </label>
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input
+              class="w-3 h-3 text-gray-900 bg-gray-100 border-gray-300 rounded"
+              type="checkbox"
+            />
+            <span>Coleccion</span>
+          </label>
+        </div>
+      </aside>
+
+      <!-- Main content -->
+      <section class="flex-1 flex flex-col gap-4">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+          <h2 class="text-gray-300 font-semibold text-lg">Explorando José José</h2>
+          <div class="relative inline-block text-left">
+            <select
+              aria-label="Ordenar por"
+              class="bg-gray-700 text-gray-300 text-xs rounded px-3 py-1 cursor-pointer"
+            >
+              <option class="font-bold" selected>Relevancia</option>
+              <option>De la A a la Z</option>
+              <option>De la Z a la A</option>
+              <option>Popular</option>
+              <option>Nuevos lanzamientos</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 md:gap-4">
+          <!-- Card 1 -->
+          <article class="bg-gray-700 rounded-md p-2 flex flex-col gap-1 w-full">
+            <img
+              alt="What's Going On album cover by Marvin Gaye, showing a close-up portrait of Marvin Gaye looking upwards with a greenish background"
+              class="rounded-md w-full aspect-square object-cover"
+              loading="lazy"
+              src="https://storage.googleapis.com/a1aa/image/1042edd0-2f6d-4832-b861-07202c0f1008.jpg"
+            />
+            <h3 class="text-white text-xs font-semibold truncate">What's Going On</h3>
+            <p class="text-gray-400 text-[9px] truncate">Marvin Gaye</p>
+          </article>
+          
+          <!-- Card 2 -->
+          <article class="bg-gray-700 rounded-md p-2 flex flex-col gap-1 w-full">
+            <img
+              alt="Blue album cover by Joni Mitchell, showing a blue monochrome portrait of Joni Mitchell"
+              class="rounded-md w-full aspect-square object-cover"
+              loading="lazy"
+              src="https://storage.googleapis.com/a1aa/image/733e4073-381d-487b-4dce-531825ad434c.jpg"
+            />
+            <h3 class="text-white text-xs font-semibold truncate">Blue</h3>
+            <p class="text-gray-400 text-[9px] truncate">Joni Mitchell</p>
+          </article>
+          
+          <!-- Card 3 -->
+          <article class="bg-gray-700 rounded-md p-2 flex flex-col gap-1 w-full">
+            <img
+              alt="Bridge Over Troubled Water album cover by Simon & Garfunkel, showing a faded photo of the duo"
+              class="rounded-md w-full aspect-square object-cover"
+              loading="lazy"
+              src="https://storage.googleapis.com/a1aa/image/8117d89b-bf92-43d8-c8cc-298f351b876a.jpg"
+            />
+            <h3 class="text-white text-xs font-semibold truncate">Bridge Over Tr...</h3>
+            <p class="text-gray-400 text-[9px] truncate">Simon &amp; Garfunkel</p>
+          </article>
+          
+          <!-- Card 4 -->
+          <article class="bg-gray-700 rounded-md p-2 flex flex-col gap-1 w-full">
+            <img
+              alt="Unknown Pleasures album cover by Joy Division, showing a black background with white waveform lines"
+              class="rounded-md w-full aspect-square object-cover"
+              loading="lazy"
+              src="https://storage.googleapis.com/a1aa/image/f75b9b02-19bd-48cf-3ba9-d7281f1d3f74.jpg"
+            />
+            <h3 class="text-white text-xs font-semibold truncate">Unknown Pleas...</h3>
+            <p class="text-gray-400 text-[9px] truncate">Joy Division</p>
+          </article>
+          
+          <!-- Card 5 -->
+          <article class="bg-gray-700 rounded-md p-2 flex flex-col gap-1 w-full">
+            <img
+              alt="London Calling album cover by The Clash, showing a black and white photo of a man smashing a guitar with green and pink text overlay"
+              class="rounded-md w-full aspect-square object-cover"
+              loading="lazy"
+              src="https://storage.googleapis.com/a1aa/image/083096d8-c3ea-464f-c7cc-cc7df31a2f2e.jpg"
+            />
+            <h3 class="text-white text-xs font-semibold truncate">London Calling</h3>
+            <p class="text-gray-400 text-[9px] truncate">The Clash</p>
+          </article>
+          
+          <!-- Card 6 -->
+          <article class="bg-gray-700 rounded-md p-2 flex flex-col gap-1 w-full">
+            <img
+              alt="The Velvet Underground album cover showing a white background with a yellow banana illustration"
+              class="rounded-md w-full aspect-square object-cover"
+              loading="lazy"
+              src="https://storage.googleapis.com/a1aa/image/fd5676cc-393b-4b74-9563-649e655f909c.jpg"
+            />
+            <h3 class="text-white text-xs font-semibold truncate">The Velvet...</h3>
+            <p class="text-gray-400 text-[9px] truncate">The Velvet Underground</p>
+          </article>
+          
+          <!-- Repeat cards as needed -->
+          <article class="bg-gray-700 rounded-md p-2 flex flex-col gap-1 w-full">
+            <img
+              alt="What's Going On album cover by Marvin Gaye"
+              class="rounded-md w-full aspect-square object-cover"
+              loading="lazy"
+              src="https://storage.googleapis.com/a1aa/image/1042edd0-2f6d-4832-b861-07202c0f1008.jpg"
+            />
+            <h3 class="text-white text-xs font-semibold truncate">What's Going On</h3>
+            <p class="text-gray-400 text-[9px] truncate">Marvin Gaye</p>
+          </article>
+          
+          <article class="bg-gray-700 rounded-md p-2 flex flex-col gap-1 w-full">
+            <img
+              alt="Blue album cover by Joni Mitchell"
+              class="rounded-md w-full aspect-square object-cover"
+              loading="lazy"
+              src="https://storage.googleapis.com/a1aa/image/733e4073-381d-487b-4dce-531825ad434c.jpg"
+            />
+            <h3 class="text-white text-xs font-semibold truncate">Blue</h3>
+            <p class="text-gray-400 text-[9px] truncate">Joni Mitchell</p>
+          </article>
+        </div>
+
+        <!-- Pagination -->
+        <nav
+          aria-label="Paginación"
+          class="flex justify-center items-center gap-2 text-gray-500 text-xs mt-4"
+        >
+          <button
+            aria-current="page"
+            class="bg-gray-600 text-gray-300 rounded px-2 py-1 cursor-default"
+          >
+            1
+          </button>
+          <button class="hover:text-gray-300">2</button>
+          <button class="hover:text-gray-300">3</button>
+          <span>...</span>
+          <button class="hover:text-gray-300">67</button>
+          <button class="hover:text-gray-300">68</button>
+        </nav>
+      </section>
+    </main>
+  </div>
+
+  <!-- Mobile menu toggle script -->
+  <script>
+    document.getElementById('mobileMenuButton').addEventListener('click', function() {
+      document.getElementById('mainNav').classList.toggle('hidden');
+      document.getElementById('filtersSidebar').classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>

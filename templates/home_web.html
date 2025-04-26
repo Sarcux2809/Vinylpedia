@@ -1,0 +1,535 @@
+<html lang="es">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Spinify
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+      font-family: "Inter", sans-serif;
+    }
+  </style>
+ </head>
+ <body class="bg-gradient-to-b from-[#2a2520] to-[#1a1a1a] min-h-screen flex flex-col items-stretch p-0">
+    <div class="w-full h-full rounded-none bg-gradient-to-b from-[#2a2520] to-[#1a1a1a] p-6 text-white">
+   <!-- Header -->
+   <header class="flex flex-wrap items-center justify-between mb-6 gap-3">
+    <div class="flex items-center gap-3">
+     <img alt="Logo de un disco de vinilo blanco y negro con líneas" class="w-8 h-8" height="32" src="https://storage.googleapis.com/a1aa/image/dc380aa9-c18c-436c-6bb7-cf4c3ccfdfb2.jpg" width="32"/>
+     <span class="text-lg font-normal select-none">
+      Spinify
+     </span>
+     <nav class="flex gap-3 text-sm font-normal select-none">
+      <button aria-current="page" class="bg-white text-black rounded px-3 py-1 leading-5 cursor-default">
+       Inicio
+      </button>
+      <button class="hover:underline">
+       Biblioteca
+      </button>
+     </nav>
+    </div>
+    <div class="flex items-center gap-3 flex-wrap">
+     <div class="relative">
+      <input class="bg-[#4a4540] rounded-full pl-4 pr-10 py-1 text-sm placeholder:text-[#7a7a7a] focus:outline-none" placeholder="Buscar" type="search"/>
+      <i aria-hidden="true" class="fas fa-search absolute right-3 top-1/2 -translate-y-1/2 text-[#7a7a7a] text-xs">
+      </i>
+     </div>
+     <button aria-label="Carrito de compras" class="text-white text-lg">
+      <i class="fas fa-shopping-cart">
+      </i>
+     </button>
+     <div class="relative group">
+      <button aria-expanded="false" aria-haspopup="true" class="bg-white text-black rounded px-3 py-1 font-semibold" id="userMenuButton">
+       Juan A
+      </button>
+      <div aria-label="Menú de usuario" class="absolute right-0 mt-1 w-36 bg-white text-black rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity text-xs" role="menu">
+       <button class="block w-full text-left px-3 py-1 font-bold hover:bg-gray-200" role="menuitem">
+        Mi cuenta
+       </button>
+       <button class="block w-full text-left px-3 py-1 hover:bg-gray-200" role="menuitem">
+        Para Artistas
+       </button>
+       <button class="block w-full text-left px-3 py-1 hover:bg-gray-200" role="menuitem">
+        Cerrar sesión
+       </button>
+      </div>
+     </div>
+     <button class="bg-[#4a4540] rounded px-3 py-1 text-xs font-normal hover:bg-[#5a5550]">
+      Register
+     </button>
+    </div>
+   </header>
+   <!-- Las leyendas detrás del sonido -->
+   <section class="mb-6">
+    <h2 class="font-semibold text-base mb-3 select-none">
+     Las leyendas detrás del sonido
+    </h2>
+    <ul class="flex gap-6 overflow-x-auto scrollbar-hide py-1">
+     <li class="flex flex-col items-center text-xs min-w-[56px] shrink-0">
+      <img alt="Retrato de José José con fondo rojo" class="rounded-full w-14 h-14 object-cover" height="56" src="https://storage.googleapis.com/a1aa/image/1f48bfa1-3950-48df-3f60-366a99f34a4f.jpg" width="56"/>
+      <span class="mt-1 text-center">
+       José José
+      </span>
+     </li>
+     <li class="flex flex-col items-center text-xs min-w-[56px] shrink-0">
+      <img alt="Retrato de Pink Floyd en blanco y negro" class="rounded-full w-14 h-14 object-cover" height="56" src="https://storage.googleapis.com/a1aa/image/1b658a2c-53fe-418a-1780-60ec9ee1d1f4.jpg" width="56"/>
+      <span class="mt-1 text-center">
+       Pink Floyd
+      </span>
+     </li>
+     <li class="flex flex-col items-center text-xs min-w-[56px] shrink-0">
+      <img alt="Retrato de Queen en blanco y negro" class="rounded-full w-14 h-14 object-cover" height="56" src="https://storage.googleapis.com/a1aa/image/3ea97fb6-ae61-42de-f60c-15b568bf06df.jpg" width="56"/>
+      <span class="mt-1 text-center">
+       Queen
+      </span>
+     </li>
+     <li class="flex flex-col items-center text-xs min-w-[56px] shrink-0">
+      <img alt="Retrato de Juan Gabriel con fondo azul y blanco" class="rounded-full w-14 h-14 object-cover" height="56" src="https://storage.googleapis.com/a1aa/image/b37b2ba1-86be-4232-8033-cd2c0f262a79.jpg" width="56"/>
+      <span class="mt-1 text-center">
+       Juan Gabriel
+      </span>
+     </li>
+     <li class="flex flex-col items-center text-xs min-w-[56px] shrink-0">
+      <img alt="Retrato de Rocío Dúrcal con fondo naranja" class="rounded-full w-14 h-14 object-cover" height="56" src="https://storage.googleapis.com/a1aa/image/fd054069-c353-4fb3-8a41-78fb95f3923c.jpg" width="56"/>
+      <span class="mt-1 text-center">
+       Rocío Dúrcal
+      </span>
+     </li>
+     <li class="flex flex-col items-center text-xs min-w-[56px] shrink-0">
+      <img alt="Retrato de Daft Punk con casco negro y luces" class="rounded-full w-14 h-14 object-cover" height="56" src="https://storage.googleapis.com/a1aa/image/ef6b3cca-3121-49a4-712a-5c4c60e6f2a2.jpg" width="56"/>
+      <span class="mt-1 text-center">
+       Daft Punk
+      </span>
+     </li>
+     <li class="flex flex-col items-center text-xs min-w-[56px] shrink-0">
+      <img alt="Retrato de Nirvana en blanco y negro" class="rounded-full w-14 h-14 object-cover" height="56" src="https://storage.googleapis.com/a1aa/image/8a05bb1b-7dd8-4153-83d3-96a55a9dd90d.jpg" width="56"/>
+      <span class="mt-1 text-center">
+       Nirvana
+      </span>
+     </li>
+     <li class="flex flex-col items-center text-xs min-w-[56px] shrink-0">
+      <img alt="Retrato de Lana Del Rey sonriendo" class="rounded-full w-14 h-14 object-cover" height="56" src="https://storage.googleapis.com/a1aa/image/75638f24-8ff6-44d4-de0d-4284b2cb6214.jpg" width="56"/>
+      <span class="mt-1 text-center">
+       Lana Del Rey
+      </span>
+     </li>
+     <li class="flex flex-col items-center text-xs min-w-[56px] shrink-0">
+      <img alt="Retrato de The Beatles en blanco y negro" class="rounded-full w-14 h-14 object-cover" height="56" src="https://storage.googleapis.com/a1aa/image/759e326a-bb88-4e75-9c93-4654b080be05.jpg" width="56"/>
+      <span class="mt-1 text-center">
+       The Beatles
+      </span>
+     </li>
+    </ul>
+   </section>
+   <!-- Sonidos que marcaron historia (first block) -->
+   <section class="mb-6">
+    <h3 class="font-semibold text-base mb-3 select-none">
+     Sonidos que marcaron historia
+    </h3>
+    <div class="grid grid-cols-3 gap-3">
+     <button class="flex items-center justify-between bg-[#4a4540] rounded-md p-2 text-xs font-semibold select-none">
+      <div class="flex items-center gap-2">
+       <div class="w-6 h-6 rounded-full bg-pink-300">
+       </div>
+       1950s
+      </div>
+      <img alt="Radio antigua de los años 50s" class="rounded-r-md w-12 h-8 object-cover" height="32" src="https://storage.googleapis.com/a1aa/image/cc3f2a7d-6a53-45bb-5513-ec6b2fe49b45.jpg" width="48"/>
+     </button>
+     <button class="flex items-center justify-between bg-[#4a4540] rounded-md p-2 text-xs font-semibold select-none">
+      <div class="flex items-center gap-2">
+       <div class="w-6 h-6 rounded-full bg-yellow-400">
+       </div>
+       1960s
+      </div>
+      <img alt="Concierto de música de los años 60s" class="rounded-r-md w-12 h-8 object-cover" height="32" src="https://storage.googleapis.com/a1aa/image/bc038a42-75b1-4c69-bf5b-6c22ed4f2378.jpg" width="48"/>
+     </button>
+     <button class="flex items-center justify-between bg-[#4a4540] rounded-md p-2 text-xs font-semibold select-none">
+      <div class="flex items-center gap-2">
+       <div class="w-6 h-6 rounded-full bg-[#8b4a1a]">
+       </div>
+       1970s
+      </div>
+      <img alt="Disco de vinilo y luces de los años 70s" class="rounded-r-md w-12 h-8 object-cover" height="32" src="https://storage.googleapis.com/a1aa/image/5297a581-afdf-475a-c221-f7b4eed2c7cb.jpg" width="48"/>
+     </button>
+     <button class="flex items-center justify-between bg-[#4a4540] rounded-md p-2 text-xs font-semibold select-none">
+      <div class="flex items-center gap-2">
+       <div class="w-6 h-6 rounded-full bg-fuchsia-400">
+       </div>
+       1980s
+      </div>
+      <img alt="Concierto de música de los años 80s con luces moradas" class="rounded-r-md w-12 h-8 object-cover" height="32" src="https://storage.googleapis.com/a1aa/image/2e4ae22e-eaee-42fd-9553-023a53d9c67d.jpg" width="48"/>
+     </button>
+     <button class="flex items-center justify-between bg-[#4a4540] rounded-md p-2 text-xs font-semibold select-none">
+      <div class="flex items-center gap-2">
+       <div class="w-6 h-6 rounded-full bg-orange-600">
+       </div>
+       1990s
+      </div>
+      <img alt="DJ con audífonos y equipo de música de los años 90s" class="rounded-r-md w-12 h-8 object-cover" height="32" src="https://storage.googleapis.com/a1aa/image/698bbd3d-caf8-4ba8-67c5-3e8cd989373c.jpg" width="48"/>
+     </button>
+     <button class="flex items-center justify-between bg-[#4a4540] rounded-md p-2 text-xs font-semibold select-none">
+      <div class="flex items-center gap-2">
+       <div class="w-6 h-6 rounded-full bg-sky-400">
+       </div>
+       2000s y 2010s
+      </div>
+      <img alt="Concierto de música de los años 2000s y 2010s" class="rounded-r-md w-12 h-8 object-cover" height="32" src="https://storage.googleapis.com/a1aa/image/29435986-129f-4efe-455d-79316af003eb.jpg" width="48"/>
+     </button>
+    </div>
+   </section>
+   <!-- Lo más escuchado, lo más amado -->
+   <section class="mb-6">
+    <h3 class="font-semibold text-base mb-3 select-none">
+     Lo más escuchado, lo más amado
+    </h3>
+    <div class="flex items-center gap-3 overflow-x-auto scrollbar-hide py-1">
+     <div class="relative shrink-0 w-[180px] h-[90px] rounded-md overflow-hidden">
+      <img alt="Portada del álbum The Dark Side of the Moon de Pink Floyd con prisma y arcoíris" class="w-full h-full object-cover" height="90" src="https://storage.googleapis.com/a1aa/image/1d897db7-8aa7-4250-009c-48c9e8d9ba6e.jpg" width="180"/>
+      <div class="absolute bottom-1 left-2 text-xs font-semibold text-white drop-shadow-[0_0_3px_rgba(0,0,0,0.8)]">
+       <p>
+        The Dark Side of the Moon
+       </p>
+       <p class="text-[10px] font-normal">
+        Pink Floyd
+       </p>
+      </div>
+      <button aria-label="Reproducir The Dark Side of the Moon" class="absolute bottom-2 right-2 bg-white bg-opacity-30 rounded-full w-6 h-6 flex items-center justify-center text-black hover:bg-opacity-50">
+       <i class="fas fa-play text-xs">
+       </i>
+      </button>
+     </div>
+     <div class="relative shrink-0 w-[180px] h-[90px] rounded-md overflow-hidden">
+      <img alt="Portada del álbum Abbey Road (Super Deluxe Edition) de The Beatles con los cuatro cruzando la calle" class="w-full h-full object-cover" height="90" src="https://storage.googleapis.com/a1aa/image/02279b8d-4f0d-4c72-4f90-85684b7eb5f6.jpg" width="180"/>
+      <div class="absolute top-0 left-0 bg-blue-600 text-white text-[10px] font-bold px-1 py-0.5 rounded-tr-md rounded-br-md select-none" style="writing-mode: vertical-rl; text-orientation: mixed;">
+       SUPER DELUXE EDITION
+      </div>
+      <div class="absolute bottom-1 left-2 text-xs font-semibold text-white drop-shadow-[0_0_3px_rgba(0,0,0,0.8)]">
+       <p>
+        Abbey Road (Super Deluxe Edition)
+       </p>
+       <p class="text-[10px] font-normal">
+        The Beatles
+       </p>
+      </div>
+      <button aria-label="Reproducir Abbey Road (Super Deluxe Edition)" class="absolute bottom-2 right-2 bg-white bg-opacity-30 rounded-full w-6 h-6 flex items-center justify-center text-black hover:bg-opacity-50">
+       <i class="fas fa-play text-xs">
+       </i>
+      </button>
+     </div>
+     <div class="relative shrink-0 w-[90px] h-[90px] rounded-md overflow-hidden">
+      <img alt="Portada del álbum Thriller de Michael Jackson con chaqueta blanca" class="w-full h-full object-cover" height="90" src="https://storage.googleapis.com/a1aa/image/bf8a1572-add5-448c-41e5-ea6bbe6dd6f7.jpg" width="90"/>
+     </div>
+     <div class="relative shrink-0 w-[36px] h-[90px] rounded-md overflow-hidden">
+      <img alt="Portada del álbum Seal con bebé azul" class="w-full h-full object-cover" height="90" src="https://storage.googleapis.com/a1aa/image/71e3e0fa-3f34-402c-8fde-65770e072c22.jpg" width="36"/>
+     </div>
+     <button aria-label="Más álbumes" class="text-xs font-semibold bg-[#4a4540] rounded px-2 py-1 select-none">
+      Más
+     </button>
+     <button aria-label="Anterior" class="text-white text-xs font-semibold select-none">
+      ←
+     </button>
+     <button aria-label="Siguiente" class="text-white text-xs font-semibold select-none">
+      →
+     </button>
+    </div>
+   </section>
+   <!-- Del baúl sonoro a tus oídos: vinilos que debes escuchar. -->
+   <section class="mb-6">
+    <h3 class="font-semibold text-base mb-3 select-none">
+     Del baúl sonoro a tus oídos: vinilos que debes escuchar.
+    </h3>
+    <div class="flex gap-3 overflow-x-auto scrollbar-hide py-1">
+     <div class="flex flex-col shrink-0 w-[72px] text-[9px]">
+      <img alt="Portada del álbum What's Going On de Marvin Gaye" class="rounded-md w-full h-auto object-cover" height="72" src="https://storage.googleapis.com/a1aa/image/07d99483-89ee-47a3-c047-86c85be0209d.jpg" width="72"/>
+      <span class="font-semibold mt-1 leading-4">
+       What's Going On
+      </span>
+      <span class="text-gray-300">
+       Marvin Gaye
+      </span>
+     </div>
+     <div class="flex flex-col shrink-0 w-[72px] text-[9px]">
+      <img alt="Portada del álbum Blue de Joni Mitchell" class="rounded-md w-full h-auto object-cover" height="72" src="https://storage.googleapis.com/a1aa/image/bae523dd-91cd-4aa3-00a4-7f178b5e815c.jpg" width="72"/>
+      <span class="font-semibold mt-1 leading-4">
+       Blue
+      </span>
+      <span class="text-gray-300">
+       Joni Mitchell
+      </span>
+     </div>
+     <div class="flex flex-col shrink-0 w-[72px] text-[9px]">
+      <img alt="Portada del álbum Bridge Over Troubled Water de Simon &amp; Garfunkel" class="rounded-md w-full h-auto object-cover" height="72" src="https://storage.googleapis.com/a1aa/image/4e26ee23-8fc9-45cb-0b4a-30410d87ad28.jpg" width="72"/>
+      <span class="font-semibold mt-1 leading-4">
+       Bridge Over Tr...
+      </span>
+      <span class="text-gray-300">
+       Simon &amp; Garfunkel
+      </span>
+     </div>
+     <div class="flex flex-col shrink-0 w-[72px] text-[9px]">
+      <img alt="Portada del álbum Unknown Pleasures de Joy Division" class="rounded-md w-full h-auto object-cover" height="72" src="https://storage.googleapis.com/a1aa/image/bb1e8b75-c24f-43ed-470e-6e0d509934af.jpg" width="72"/>
+      <span class="font-semibold mt-1 leading-4">
+       Unknown Pleas...
+      </span>
+      <span class="text-gray-300">
+       Joy Division
+      </span>
+     </div>
+     <div class="flex flex-col shrink-0 w-[72px] text-[9px]">
+      <img alt="Portada del álbum London Calling de The Clash" class="rounded-md w-full h-auto object-cover" height="72" src="https://storage.googleapis.com/a1aa/image/158705e2-8787-4e50-2ac5-38e94d51587b.jpg" width="72"/>
+      <span class="font-semibold mt-1 leading-4">
+       London Calling
+      </span>
+      <span class="text-gray-300">
+       The Clash
+      </span>
+     </div>
+     <div class="flex flex-col shrink-0 w-[72px] text-[9px]">
+      <img alt="Portada del álbum The Velvet Underground &amp; Nico" class="rounded-md w-full h-auto object-cover" height="72" src="https://storage.googleapis.com/a1aa/image/8e09733c-88f5-47f0-70b6-cd9710b084bc.jpg" width="72"/>
+      <span class="font-semibold mt-1 leading-4">
+       The Velvet Und...
+      </span>
+      <span class="text-gray-300">
+       The Velvet Under...
+      </span>
+     </div>
+     <div class="flex flex-col shrink-0 w-[72px] text-[9px]">
+      <img alt="Portada del álbum I Never Loved a Man de Aretha Franklin" class="rounded-md w-full h-auto object-cover" height="72" src="https://storage.googleapis.com/a1aa/image/75a8d598-55cf-46e6-f4f8-fa8780a0cb30.jpg" width="72"/>
+      <span class="font-semibold mt-1 leading-4">
+       I Never Loved a...
+      </span>
+      <span class="text-gray-300">
+       Aretha Franklin
+      </span>
+     </div>
+    </div>
+    <div class="flex gap-3 mt-2 text-xs font-semibold select-none">
+     <button class="bg-[#4a4540] rounded px-2 py-1">
+      Más
+     </button>
+     <button>
+      ←
+     </button>
+     <button>
+      →
+     </button>
+    </div>
+   </section>
+   <!-- Nuevas joyas con alma de clásicos. -->
+   <section class="mb-6">
+    <h3 class="font-semibold text-base mb-3 select-none">
+     Nuevas joyas con alma de clásicos.
+    </h3>
+    <div class="flex gap-3 overflow-x-auto scrollbar-hide py-1">
+     <div class="flex flex-col shrink-0 w-[72px] text-[9px]">
+      <img alt="Portada del álbum Did You Know de Lana Del Rey" class="rounded-md w-full h-auto object-cover" height="72" src="https://storage.googleapis.com/a1aa/image/10c514a1-bca1-4a24-59f8-edf590e44223.jpg" width="72"/>
+      <span class="font-semibold mt-1 leading-4">
+       Did You Know...
+      </span>
+      <span class="text-gray-300">
+       Lana Del Rey
+      </span>
+     </div>
+     <div class="flex flex-col shrink-0 w-[72px] text-[9px]">
+      <img alt="Portada del álbum The Car de Arctic Monkeys" class="rounded-md w-full h-auto object-cover" height="72" src="https://storage.googleapis.com/a1aa/image/03264846-0117-4c6b-0661-1378189a3b14.jpg" width="72"/>
+      <span class="font-semibold mt-1 leading-4">
+       The Car
+      </span>
+      <span class="text-gray-300">
+       Arctic Monkeys
+      </span>
+     </div>
+     <div class="flex flex-col shrink-0 w-[72px] text-[9px]">
+      <img alt="Portada del álbum An Evening with Silk Sonic de Bruno Mars y Anderson .Paak" class="rounded-md w-full h-auto object-cover" height="72" src="https://storage.googleapis.com/a1aa/image/e22376e7-b50e-4065-787f-ac87dfc3cbd3.jpg" width="72"/>
+      <span class="font-semibold mt-1 leading-4">
+       An Evening wit...
+      </span>
+      <span class="text-gray-300">
+       Bruno Mars, And...
+      </span>
+     </div>
+     <div class="flex flex-col shrink-0 w-[72px] text-[9px]">
+      <img alt="Portada del álbum And in the Dark de Weyes Blood" class="rounded-md w-full h-auto object-cover" height="72" src="https://storage.googleapis.com/a1aa/image/dc1b5183-df9a-448c-b308-82fd13e08f1d.jpg" width="72"/>
+      <span class="font-semibold mt-1 leading-4">
+       And in the Dark...
+      </span>
+      <span class="text-gray-300">
+       Weyes Blood
+      </span>
+     </div>
+     <div class="flex flex-col shrink-0 w-[72px] text-[9px]">
+      <img alt="Portada del álbum Midnights de Taylor Swift" class="rounded-md w-full h-auto object-cover" height="72" src="https://storage.googleapis.com/a1aa/image/73bc4625-85e0-4253-c05c-2f6ccddce978.jpg" width="72"/>
+      <span class="font-semibold mt-1 leading-4">
+       Midnights
+      </span>
+      <span class="text-gray-300">
+       Taylor Swift
+      </span>
+     </div>
+     <div class="flex flex-col shrink-0 w-[72px] text-[9px]">
+      <img alt="Portada del álbum Mordechai de Khruangbin" class="rounded-md w-full h-auto object-cover" height="72" src="https://storage.googleapis.com/a1aa/image/4ab95705-87aa-4b52-d802-8453450e3cd6.jpg" width="72"/>
+      <span class="font-semibold mt-1 leading-4">
+       Mordechai
+      </span>
+      <span class="text-gray-300">
+       Khruangbin
+      </span>
+     </div>
+     <div class="flex flex-col shrink-0 w-[72px] text-[9px]">
+      <img alt="Portada del álbum I Don't Live Here de The War on Drugs" class="rounded-md w-full h-auto object-cover" height="72" src="https://storage.googleapis.com/a1aa/image/8e781559-ddaf-4a1f-bbb3-07da76624fe3.jpg" width="72"/>
+      <span class="font-semibold mt-1 leading-4">
+       I Don't Live Her...
+      </span>
+      <span class="text-gray-300">
+       The War on Drugs
+      </span>
+     </div>
+    </div>
+    <div class="flex gap-3 mt-2 text-xs font-semibold select-none">
+     <button class="bg-[#4a4540] rounded px-2 py-1">
+      Más
+     </button>
+     <button>
+      ←
+     </button>
+     <button>
+      →
+     </button>
+    </div>
+   </section>
+   <!-- Sonidos que marcaron historia (second block) -->
+   <section>
+    <h3 class="font-semibold text-base mb-3 select-none">
+     Sonidos que marcaron historia
+    </h3>
+    <div class="grid grid-cols-3 gap-3">
+     <button class="flex items-center justify-between bg-[#4a4540] rounded-md p-2 text-xs font-semibold select-none">
+      <div class="flex items-center gap-2">
+       <div class="w-6 h-6 rounded-full bg-[#8b2a44]">
+       </div>
+       Rock Clásico
+      </div>
+      <img alt="Vinilos de rock clásico" class="rounded-r-md w-12 h-8 object-cover" height="32" src="https://storage.googleapis.com/a1aa/image/808716a6-fe43-4604-6fe8-d8eea9a33627.jpg" width="48"/>
+     </button>
+     <button class="flex items-center justify-between bg-[#4a4540] rounded-md p-2 text-xs font-semibold select-none">
+      <div class="flex items-center gap-2">
+       <div class="w-6 h-6 rounded-full bg-yellow-600">
+       </div>
+       Soul &amp; Motown
+      </div>
+      <img alt="Vinilos de soul y motown" class="rounded-r-md w-12 h-8 object-cover" height="32" src="https://storage.googleapis.com/a1aa/image/3642ec85-11be-42a7-3c99-0eca38c34cc5.jpg" width="48"/>
+     </button>
+     <button class="flex items-center justify-between bg-[#4a4540] rounded-md p-2 text-xs font-semibold select-none">
+      <div class="flex items-center gap-2">
+       <div class="w-6 h-6 rounded-full bg-orange-500">
+       </div>
+       Funk
+      </div>
+      <img alt="Vinilos de funk" class="rounded-r-md w-12 h-8 object-cover" height="32" src="https://storage.googleapis.com/a1aa/image/56a71e73-6e53-4645-7214-b1f82abc0b50.jpg" width="48"/>
+     </button>
+     <button class="flex items-center justify-between bg-[#4a4540] rounded-md p-2 text-xs font-semibold select-none">
+      <div class="flex items-center gap-2">
+       <div class="w-6 h-6 rounded-full bg-blue-700">
+       </div>
+       Jazz
+      </div>
+      <img alt="Vinilos de jazz" class="rounded-r-md w-12 h-8 object-cover" height="32" src="https://storage.googleapis.com/a1aa/image/c812c4d9-3338-4020-b96b-486cc152c42e.jpg" width="48"/>
+     </button>
+     <button class="flex items-center justify-between bg-[#4a4540] rounded-md p-2 text-xs font-semibold select-none">
+      <div class="flex items-center gap-2">
+       <div class="w-6 h-6 rounded-full bg-blue-900">
+       </div>
+       Blues
+      </div>
+      <img alt="Vinilos de blues" class="rounded-r-md w-12 h-8 object-cover" height="32" src="https://storage.googleapis.com/a1aa/image/08c93e9c-f3e5-40bb-03f9-78346f54114e.jpg" width="48"/>
+     </button>
+     <button class="flex items-center justify-between bg-[#4a4540] rounded-md p-2 text-xs font-semibold select-none">
+      <div class="flex items-center gap-2">
+       <div class="w-6 h-6 rounded-full bg-pink-500">
+       </div>
+       Disco
+      </div>
+      <img alt="Vinilos de disco" class="rounded-r-md w-12 h-8 object-cover" height="32" src="https://storage.googleapis.com/a1aa/image/1b832f35-ceae-43e7-9b4b-0639990e4df9.jpg" width="48"/>
+     </button>
+     <button class="flex items-center justify-between bg-[#4a4540] rounded-md p-2 text-xs font-semibold select-none">
+      <div class="flex items-center gap-2">
+       <div class="w-6 h-6 rounded-full bg-pink-300">
+       </div>
+       Pop Retro
+      </div>
+      <img alt="Vinilos de pop retro" class="rounded-r-md w-12 h-8 object-cover" height="32" src="https://storage.googleapis.com/a1aa/image/0375ee0d-df63-4174-6bf7-eca4575d0843.jpg" width="48"/>
+     </button>
+     <button class="flex items-center justify-between bg-[#4a4540] rounded-md p-2 text-xs font-semibold select-none">
+      <div class="flex items-center gap-2">
+       <div class="w-6 h-6 rounded-full bg-lime-400">
+       </div>
+       Psychedelic Rock
+      </div>
+      <img alt="Vinilos de rock psicodélico" class="rounded-r-md w-12 h-8 object-cover" height="32" src="https://storage.googleapis.com/a1aa/image/c42cef9e-c805-444c-9c05-76c9b77960a3.jpg" width="48"/>
+     </button>
+     <button class="flex items-center justify-between bg-[#4a4540] rounded-md p-2 text-xs font-semibold select-none">
+      <div class="flex items-center gap-2">
+       <div class="w-6 h-6 rounded-full bg-[#8b6a4a]">
+       </div>
+       Folk
+      </div>
+      <img alt="Vinilos de folk" class="rounded-r-md w-12 h-8 object-cover" height="32" src="https://storage.googleapis.com/a1aa/image/e2eebdfb-6737-4fc8-0cd8-bd527ba64523.jpg" width="48"/>
+     </button>
+     <button class="flex items-center justify-between bg-[#4a4540] rounded-md p-2 text-xs font-semibold select-none">
+      <div class="flex items-center gap-2">
+       <div class="w-6 h-6 rounded-full bg-lime-700">
+       </div>
+       Reggae &amp; Dub
+      </div>
+      <img alt="Vinilos de reggae y dub" class="rounded-r-md w-12 h-8 object-cover" height="32" src="https://storage.googleapis.com/a1aa/image/817409b6-fad1-447f-d288-c51f22e5c94e.jpg" width="48"/>
+     </button>
+     <button class="flex items-center justify-between bg-[#4a4540] rounded-md p-2 text-xs font-semibold select-none">
+      <div class="flex items-center gap-2">
+       <div class="w-6 h-6 rounded-full bg-gray-700">
+       </div>
+       Post-Punk / New Wave
+      </div>
+      <img alt="Vinilos de post-punk y new wave" class="rounded-r-md w-12 h-8 object-cover" height="32" src="https://storage.googleapis.com/a1aa/image/8c20b09f-c7cc-488b-e877-bf0c803f1a96.jpg" width="48"/>
+     </button>
+     <button class="flex items-center justify-between bg-[#4a4540] rounded-md p-2 text-xs font-semibold select-none">
+      <div class="flex items-center gap-2">
+       <div class="w-6 h-6 rounded-full bg-purple-700">
+       </div>
+       R&amp;B Clásico
+      </div>
+      <img alt="Vinilos de R&amp;B clásico" class="rounded-r-md w-12 h-8 object-cover" height="32" src="https://storage.googleapis.com/a1aa/image/0bc4bbe2-ae6b-45d0-3a94-c6f38b3f97d6.jpg" width="48"/>
+     </button>
+     <button class="flex items-center justify-between bg-[#4a4540] rounded-md p-2 text-xs font-semibold select-none">
+      <div class="flex items-center gap-2">
+       <div class="w-6 h-6 rounded-full bg-orange-700">
+       </div>
+       Garage Rock
+      </div>
+      <img alt="Vinilos de garage rock" class="rounded-r-md w-12 h-8 object-cover" height="32" src="https://storage.googleapis.com/a1aa/image/77c2ffea-a9f6-4c4a-7f37-ec17ab6dde8e.jpg" width="48"/>
+     </button>
+     <button class="flex items-center justify-between bg-[#4a4540] rounded-md p-2 text-xs font-semibold select-none">
+      <div class="flex items-center gap-2">
+       <div class="w-6 h-6 rounded-full bg-yellow-300">
+       </div>
+       Experimental
+      </div>
+      <img alt="Vinilos de música experimental" class="rounded-r-md w-12 h-8 object-cover" height="32" src="https://storage.googleapis.com/a1aa/image/7bc370c6-9245-4183-21e3-3dcbb6accc07.jpg" width="48"/>
+     </button>
+     <button class="flex items-center justify-between bg-[#4a4540] rounded-md p-2 text-xs font-semibold select-none">
+      <div class="flex items-center gap-2">
+       <div class="w-6 h-6 rounded-full bg-[#8b2a2a]">
+       </div>
+       Latin Vintage
+      </div>
+      <img alt="Vinilos de música latina vintage" class="rounded-r-md w-12 h-8 object-cover" height="32" src="https://storage.googleapis.com/a1aa/image/3d597fbb-78c6-4fc1-5861-284c0e95ae1c.jpg" width="48"/>
+     </button>
+    </div>
+   </section>
+  </div>
+ </body>
+</html>
